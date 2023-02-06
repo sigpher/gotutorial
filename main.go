@@ -2,31 +2,14 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"hello/funcpack"
 )
 
 func main() {
-	op := adder()
-	fmt.Println(op(10))
-	fmt.Println(op(10))
-	fmt.Println(op(10))
-	fmt.Println(op(10))
-}
+	ret := funcpack.Add(10, 20)
+	fmt.Println(ret)
 
-func adder() func(int) int {
-	var x int
-	return func(y int) int {
-		x += y
-		return x
-	}
-}
-
-func makeSuffixFunc(suffix string) func(string) string {
-	return func(name string) string {
-		if !strings.HasSuffix(name, suffix) {
-			return name + suffix
-		}
-		return name
-	}
+	txtFunc := funcpack.MakeSuffix("txt")
+	fmt.Println(txtFunc("myAsset"))
 
 }
